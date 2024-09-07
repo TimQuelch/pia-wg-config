@@ -21,7 +21,7 @@ wgHostname=$(echo $serverInfo | jq -r '.cn')
 privateKey=$(wg genkey)
 publicKey=$(echo "$privateKey" | wg pubkey)
 
-addKeyResponse=$(curl -vvv -sLG \
+addKeyResponse=$(curl -sLG \
     --connect-to "$wgHostname::$wgIp:" \
     --cacert "ca.rsa.4096.crt" \
     --data-urlencode "pt=$token" \
