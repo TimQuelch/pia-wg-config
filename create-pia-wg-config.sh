@@ -28,8 +28,6 @@ addKeyResponse=$(curl -sLG \
     --data-urlencode "pubkey=$publicKey" \
     "https://$wgHostname:1337/addKey")
 
-echo $addKeyResponse
-
 if [[ $(echo "$addKeyResponse" | jq -r '.status') != "OK" ]]; then
     >&2 echo "Failed to add key to server"
     echo "$addKeyResponse"
